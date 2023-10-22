@@ -18,12 +18,13 @@ from selenium.webdriver.common.by import By
 
 ### PARAMS
 
-DATE = os.environ("DATE")
-SLOT = os.environ("SLOT")
 CHECK_EVERY_N_SECONDS = 60
 
-TELEGRAM_BOT_TOKEN = os.environ("BOT_TOKEN")
-TELEGRAM_BOT_CHAT_ID = os.environ("CHAT_ID")
+DATE = os.getenv("DATE")
+SLOT = os.getenv("SLOT")
+
+TELEGRAM_BOT_TOKEN = os.getenv("BOT_TOKEN")
+TELEGRAM_BOT_CHAT_ID = os.getenv("CHAT_ID")
 
 
 ### HELPERS
