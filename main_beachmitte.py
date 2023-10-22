@@ -57,7 +57,7 @@ def find_slots(url: str, locations: list, date: str, slot: str, sleep_time: floa
     slots = []
 
     # open browser
-    driver = webdriver.Firefox()
+    driver = webdriver.Chrome()
     driver.get(url)
 
     # find week
