@@ -7,6 +7,7 @@ Telegram bot for checking slots at BeachMitte
 
 #!pip install selenium
 import json
+import os
 import ssl
 import time
 import urllib.request
@@ -17,12 +18,12 @@ from selenium.webdriver.common.by import By
 
 ### PARAMS
 
-DATE = "03.10.2023"
-SLOT = "16:00"
+DATE = os.environ("DATE")
+SLOT = os.environ("SLOT")
 CHECK_EVERY_N_SECONDS = 60
 
-TELEGRAM_BOT_TOKEN = "XXX"
-TELEGRAM_BOT_CHAT_ID = "XXX"
+TELEGRAM_BOT_TOKEN = os.environ("BOT_TOKEN")
+TELEGRAM_BOT_CHAT_ID = os.environ("CHAT_ID")
 
 
 ### HELPERS
