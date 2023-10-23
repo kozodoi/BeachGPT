@@ -18,7 +18,7 @@ from selenium.webdriver.common.by import By
 
 ### PARAMS
 
-CHECK_EVERY_N_SECONDS = 60
+CHECK_EVERY_N_SECONDS = 30
 
 DATE = os.getenv("DATE")
 SLOT = os.getenv("SLOT")
@@ -53,12 +53,16 @@ def find_slots(url: str, locations: list, date: str, slot: str, sleep_time: floa
         "Winterstand (6)": "location_19",
         "Mare Beach": "location_2",
     }
+    TIME_SLEEP = 3
 
     slots = []
 
     # open browser
-    driver = webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")
+    driver = webdriver.Chrome(options=options)
     driver.get(url)
+    time.sleep(TIME_SLEEP)
 
     # find week
     for _ in range(2):
@@ -123,16 +127,9 @@ def send_telegram_message(token: str, chat_id: str, message: str):
     return response.read().decode("utf-8")
 
 
-def run_bot(date: str, slot: str):
+def run_bot():
     """
     Run the bot
-
-    Parameters
-    ----------
-    date : str
-        Court date, DD.MM.YYYY
-    slot : str
-        Court time, HH:MM
     """
 
     BASE_URL = "https://mycourt.berlin/indoor"
@@ -158,4 +155,4 @@ def run_bot(date: str, slot: str):
 
 ### MAIN
 if __name__ == "__main__":
-    run_bot(date=DATE, slot=SLOT)
+    run_bot()
